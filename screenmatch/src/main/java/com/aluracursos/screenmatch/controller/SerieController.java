@@ -19,7 +19,7 @@ public class SerieController {
     @Autowired
     private SerieService service;
 
-    @GetMapping("/")
+    @GetMapping("")
     public List<SerieDTO> obtenerSeries(){
         return service.obtenerTodasLasSeries();
     }
