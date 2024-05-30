@@ -3,6 +3,7 @@ package com.aluracursos.screenmatch.controller;
 import com.aluracursos.screenmatch.dto.SerieDTO;
 import com.aluracursos.screenmatch.model.Serie;
 import com.aluracursos.screenmatch.repository.SerieRepository;
+import com.aluracursos.screenmatch.service.SerieService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -14,13 +15,10 @@ import java.util.stream.Collectors;
 public class SerieController {
 
     @Autowired
-    private SerieRepository repository;
+    private SerieService service;
 
     @GetMapping("/series")
     public List<SerieDTO> mostrarMensaje(){
-        return repository.findAll().stream()
-                .map(s -> new SerieDTO(s.getTitulo(), s.getTotalTemporadas(), s.getEvaluacion(), s.getGenero(),
-                        s.getPoster(), s.getActores(), s.getSinopsis()))
-                .collect(Collectors.toList());
+        return service.obtenerTodasLasSeries();
     }
 }
