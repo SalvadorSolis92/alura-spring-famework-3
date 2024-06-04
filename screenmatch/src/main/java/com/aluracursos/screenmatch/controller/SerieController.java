@@ -52,4 +52,9 @@ public class SerieController {
     public List<SerieDTO> obtenerSeriesPorCategoria(@PathVariable String genero){
         return service.obtenerSeriesPorCategoria(genero);
     }
+
+    @GetMapping("/{id}/temporadas/top")
+    public List<EpisodioDTO> obterTopEpisodios(@PathVariable Long id){
+        return service.obtenerTopEpisodios(id);
+    }
 }
